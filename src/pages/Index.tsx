@@ -3,9 +3,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Index = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+
+  // If user is already logged in, redirect to dashboard
+  React.useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-black to-gray-900">

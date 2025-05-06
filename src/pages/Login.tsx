@@ -1,31 +1,34 @@
 
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 import AuthLayout from '@/components/AuthLayout';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
-  const navigate = useNavigate();
+  const { signIn, user } = useAuth();
+
+  // If user is already logged in, redirect to dashboard
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate login for now
-    setTimeout(() => {
-      toast({
-        title: "Login successful",
-        description: "Welcome back to Hold'em or Fold'em Poker!"
-      });
+    try {
+      await signIn(email, password);
+      // Navigation is handled by the auth state change in AuthContext
+    } catch (error) {
+      console.error('Login error:', error);
+    } finally {
       setIsLoading(false);
-      navigate('/dashboard');
-    }, 1500);
+    }
   };
 
   return (

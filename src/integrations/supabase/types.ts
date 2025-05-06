@@ -9,7 +9,176 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      friends: {
+        Row: {
+          created_at: string
+          friend_id: string
+          id: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          friend_id: string
+          id?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          friend_id?: string
+          id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "friends_friend_id_fkey"
+            columns: ["friend_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "friends_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      game_players: {
+        Row: {
+          chips: number
+          game_id: string
+          id: string
+          is_active: boolean
+          joined_at: string
+          player_id: string
+          position: number
+        }
+        Insert: {
+          chips: number
+          game_id: string
+          id?: string
+          is_active?: boolean
+          joined_at?: string
+          player_id: string
+          position: number
+        }
+        Update: {
+          chips?: number
+          game_id?: string
+          id?: string
+          is_active?: boolean
+          joined_at?: string
+          player_id?: string
+          position?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "game_players_game_id_fkey"
+            columns: ["game_id"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "game_players_player_id_fkey"
+            columns: ["player_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      games: {
+        Row: {
+          big_blind: number
+          created_at: string
+          created_by: string
+          game_type: string
+          id: string
+          is_private: boolean
+          max_buy_in: number | null
+          max_players: number
+          min_buy_in: number
+          name: string
+          small_blind: number
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          big_blind: number
+          created_at?: string
+          created_by: string
+          game_type: string
+          id?: string
+          is_private?: boolean
+          max_buy_in?: number | null
+          max_players?: number
+          min_buy_in: number
+          name: string
+          small_blind: number
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          big_blind?: number
+          created_at?: string
+          created_by?: string
+          game_type?: string
+          id?: string
+          is_private?: boolean
+          max_buy_in?: number | null
+          max_players?: number
+          min_buy_in?: number
+          name?: string
+          small_blind?: number
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          chips_balance: number
+          created_at: string
+          id: string
+          updated_at: string
+          username: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          chips_balance?: number
+          created_at?: string
+          id: string
+          updated_at?: string
+          username: string
+        }
+        Update: {
+          avatar_url?: string | null
+          chips_balance?: number
+          created_at?: string
+          id?: string
+          updated_at?: string
+          username?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
