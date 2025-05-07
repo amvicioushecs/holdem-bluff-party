@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Chat from "./pages/Chat";
+import GameTable from "./pages/GameTable";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
             <Route path="/menu" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/store" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/game/:id" element={<ProtectedRoute><GameTable /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
