@@ -2,33 +2,12 @@
 import React from 'react';
 import DashboardLayout from '@/components/DashboardLayout';
 import GameCard from '@/components/GameCard';
-import { Users, Gamepad, DollarSign, Calendar, Menu, Timer } from 'lucide-react';
+import { Users, Gamepad, DollarSign } from 'lucide-react';
 
 const Dashboard = () => {
   return (
     <DashboardLayout>
       <div className="space-y-8">
-        {/* Top action buttons */}
-        <div className="flex justify-between items-center px-2">
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg bg-black border border-poker-gold/50">
-            <div className="text-poker-gold">
-              <Timer size={20} />
-            </div>
-          </button>
-          
-          <img 
-            src="/lovable-uploads/caae1f92-d381-43e0-b7af-21d9b5d9be32.png" 
-            alt="Hold'em or Fold'em Logo" 
-            className="w-32 h-auto"
-          />
-          
-          <button className="w-10 h-10 flex items-center justify-center rounded-lg bg-black border border-poker-gold/50">
-            <div className="text-poker-gold">
-              <Calendar size={20} />
-            </div>
-          </button>
-        </div>
-        
         {/* Hero text */}
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold text-white">
@@ -37,43 +16,33 @@ const Dashboard = () => {
           <p className="text-gray-400">Hold'em Poker</p>
         </div>
         
-        {/* Game types - circular layout */}
-        <div className="flex flex-wrap justify-center gap-4">
-          <div className="relative">
-            <GameCard 
-              title="CASH" 
-              to="/cash-game"
-              icon={<DollarSign />}
-              className="rounded-full"
-            />
-          </div>
+        {/* Game types */}
+        <div className="flex justify-center gap-6">
+          <GameCard 
+            title="CASH" 
+            to="/cash-game"
+            icon={<DollarSign />}
+          />
           
-          <div className="relative mt-8">
-            <GameCard 
-              title="FRIENDS" 
-              to="/friends-game"
-              icon={<Users />}
-              className="rounded-full"
-            />
-          </div>
+          <GameCard 
+            title="FRIENDS" 
+            to="/friends-game"
+            icon={<Users />}
+          />
+        </div>
+        
+        <div className="flex justify-center gap-6">
+          <GameCard 
+            title="SNG" 
+            to="/sit-and-go"
+            icon={<Gamepad />}
+          />
           
-          <div className="relative">
-            <GameCard 
-              title="TOURNEY" 
-              to="/tournament"
-              icon={<DollarSign />}
-              className="rounded-full"
-            />
-          </div>
-          
-          <div className="relative mt-8">
-            <GameCard 
-              title="SNG" 
-              to="/sit-and-go"
-              icon={<Gamepad />}
-              className="rounded-full"
-            />
-          </div>
+          <GameCard 
+            title="TOURNEY" 
+            to="/tournament"
+            icon={<DollarSign />}
+          />
         </div>
         
         {/* Recent tables */}

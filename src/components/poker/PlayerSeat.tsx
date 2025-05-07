@@ -29,11 +29,7 @@ const PlayerSeat: React.FC<PlayerProps> = ({ player }) => {
   return (
     <div className={`${positionClasses}`}>
       <div className={`w-16 h-20 flex flex-col items-center ${player.isCurrentPlayer ? 'scale-110' : ''}`}>
-        {/* Video/Avatar placeholder - styled as a rectangle for video screens */}
-        <div className={`w-full h-16 bg-gray-800 rounded-md shadow-lg border border-poker-darkGold/30 relative overflow-hidden ${player.folded ? 'opacity-50' : ''}`}>
-          {/* Video screen effect */}
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/10"></div>
-          
+        <div className={`w-full h-16 bg-gray-400 rounded-lg shadow-lg ${player.folded ? 'opacity-50' : ''}`}>
           {player.isCurrentPlayer && (
             <div className="absolute -bottom-4 right-0">
               <div className="w-8 h-8 rounded-full bg-poker-gold flex items-center justify-center text-black font-bold">
