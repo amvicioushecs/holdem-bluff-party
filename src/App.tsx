@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
+import Chat from "./pages/Chat";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -34,7 +35,7 @@ const App = () => (
             <Route path="/sit-and-go" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/tournament" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/friends" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-            <Route path="/chat" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
             <Route path="/menu" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/store" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
