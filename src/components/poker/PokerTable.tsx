@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import PlayerSeat from './PlayerSeat';
 import { Card } from '@/components/ui/card';
 import GameControls from './GameControls';
@@ -9,7 +9,7 @@ const PokerTable = () => {
   const players = [
     { id: 1, position: 'top', name: 'Player 1', chips: 2500, folded: true },
     { id: 2, position: 'right-top', name: 'Player 2', chips: 1800, folded: false },
-    { id: 3, position: 'right-bottom', name: 'Player 3', chips: 3000, folded: false, isCurrentPlayer: true },
+    { id: 3, position: 'right-bottom', name: 'Player 3', chips: 3000, folded: false },
     { id: 4, position: 'bottom', name: 'You', chips: 2000, folded: false, isCurrentPlayer: true },
     { id: 5, position: 'left-bottom', name: 'Player 5', chips: 1500, folded: false },
     { id: 6, position: 'left-top', name: 'Player 6', chips: 900, folded: false },
@@ -17,6 +17,9 @@ const PokerTable = () => {
 
   // Community cards (the cards on the table)
   const communityCards = ['7c', '7d', '7h', '7s', 'As']; // Example: 7 of clubs, 7 of diamonds, etc.
+  
+  // Game status
+  const [currentPot, setCurrentPot] = useState(250000);
 
   return (
     <div className="relative w-full h-[calc(100vh-12rem)] flex items-center justify-center">
@@ -26,7 +29,7 @@ const PokerTable = () => {
           <div className="absolute top-1/3 flex flex-col items-center">
             <span className="text-poker-gold text-sm font-medium">Pot</span>
             <div className="bg-black/40 rounded-full px-3 py-1 border border-poker-gold/30">
-              <span className="text-poker-gold font-bold">250K</span>
+              <span className="text-poker-gold font-bold">{(currentPot / 1000).toFixed(0)}K</span>
             </div>
           </div>
           
