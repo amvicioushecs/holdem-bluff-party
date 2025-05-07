@@ -2,6 +2,7 @@
 import React from 'react';
 import PlayerSeat from './PlayerSeat';
 import { Card } from '@/components/ui/card';
+import GameControls from './GameControls';
 
 const PokerTable = () => {
   // Mock player positions
