@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DashboardLayout from '@/components/DashboardLayout';
 import PokerTable from '@/components/poker/PokerTable';
-import GameControls from '@/components/poker/GameControls';
 import PlayerCards from '@/components/poker/PlayerCards';
 import { Button } from '@/components/ui/button';
 import { MessageSquare } from 'lucide-react';
@@ -44,6 +43,18 @@ const GameTable = () => {
             <MessageSquare size={20} />
           </Button>
         </div>
+        
+        {showChat && (
+          <div className="fixed bottom-24 right-4 w-64 h-64 bg-black border border-poker-gold/30 rounded-lg shadow-lg z-10 p-2">
+            <div className="text-center border-b border-poker-gold/20 pb-1 mb-2">
+              <span className="text-xs text-poker-gold">Table Chat</span>
+            </div>
+            <div className="h-[calc(100%-40px)] overflow-y-auto">
+              {/* Chat messages would go here */}
+              <div className="text-xs text-gray-400">No messages yet</div>
+            </div>
+          </div>
+        )}
       </div>
     </DashboardLayout>
   );
