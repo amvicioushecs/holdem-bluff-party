@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { Search, Send, Play, Pause } from 'lucide-react';
+import { Search, Send, Play, Pause, ArrowLeft } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import ChatMessage from './ChatMessage';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import ChatConversationPreview from './ChatConversationPreview';
@@ -138,6 +139,10 @@ const ChatInterface = () => {
     }
   };
 
+  const handleBackToInbox = () => {
+    setSelectedContact(null);
+  };
+
   const filteredConversations = demoConversations.filter(convo => 
     convo.contact.username.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -175,6 +180,19 @@ const ChatInterface = () => {
     // Return the existing chat messages interface
     return (
       <div className="flex flex-col h-[calc(100vh-200px)] bg-black">
+        {/* Back button */}
+        <div className="p-2 border-b border-poker-darkGold/30">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={handleBackToInbox}
+            className="text-poker-gold hover:text-poker-gold/80 hover:bg-gray-800"
+          >
+            <ArrowLeft size={18} className="mr-1" />
+            <span>Back</span>
+          </Button>
+        </div>
+        
         {/* Messages container */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {selectedContact && messages.map((message) => (
