@@ -126,6 +126,19 @@ const ChatInterface = () => {
     enabled: !!user
   });
 
+  // Add event listener for back button
+  useEffect(() => {
+    const handleBackEvent = () => {
+      setSelectedContact(null);
+    };
+
+    document.addEventListener('chat-back-to-inbox', handleBackEvent);
+    
+    return () => {
+      document.removeEventListener('chat-back-to-inbox', handleBackEvent);
+    };
+  }, []);
+
   const handleContactSelect = (contact: ChatContact) => {
     setSelectedContact(contact);
     // In a real app, you'd fetch messages for this contact
