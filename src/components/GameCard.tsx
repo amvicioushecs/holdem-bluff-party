@@ -17,7 +17,7 @@ const GameCard: React.FC<GameCardProps> = ({ title, to, icon }) => {
             {icon}
           </div>
         )}
-        <span className="text-sm font-bold text-center text-poker-gold">
+        <span className="text-xs font-bold text-center text-poker-gold">
           {title}
         </span>
       </div>
