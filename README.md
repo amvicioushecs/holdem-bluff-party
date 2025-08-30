@@ -1,3 +1,10 @@
+# Welcome to your soon to be your favorite poker app 
+
+http://googleusercontent.com/image_generation_content/0
+
+
+
+
 # Welcome to your Lovable project
 
 ## Project info
