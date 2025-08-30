@@ -1,8 +1,7 @@
+
 # Welcome to your soon to be your favorite poker app 
 
-http://googleusercontent.com/image_generation_content/0
-
-
+<img width="614" height="846" alt="holdem" src="https://github.com/user-attachments/assets/673aeabf-d4ee-4cdd-b64d-a036eafff210" />
 
 
 # Welcome to your Lovable project
